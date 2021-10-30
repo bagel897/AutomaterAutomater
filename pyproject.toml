@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "haml"
+version = "0.1.0"
+description = ""
+authors = ["bageljr <aryanagarwal897@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+homeassistant = "^2021.9.7"
+keras = "^2.6.0"
+tensorflow = "^2.6.0"
+google-cloud = "^0.34.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
