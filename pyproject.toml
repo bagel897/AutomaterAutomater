@@ -8,6 +8,7 @@ authors = ["bageljr <aryanagarwal897@gmail.com>"]
 python = "^3.9"
 google-cloud = "^0.34.0"
 Flask = "^2.0.2"
+google-cloud-aiplatform = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 
