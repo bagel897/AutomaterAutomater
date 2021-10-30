@@ -1,8 +1,8 @@
 import datetime
 import sqlite3
 from dataclasses import dataclass
-import google
-import google
+import tensorflow as tf
+
 
 @dataclass
 class state_change():
@@ -19,19 +19,12 @@ class state_change():
 Filename = "haml/home-assistant_v2.db"
 db = sqlite3.Connection(Filename)
 queries = db.execute("SELECT * from states")
-queries_oop = []
-for query in queries:
-    queries_oop.append(state_change(query[0], query[1], query[2], query[3], query[4], query[5],
-                                    query[6]))
-for query in queries_oop:
-    if query.domain == "light":
-        print(query)
-# queries = [query for query in queries]
-# times = [query[6] for query in queries]
-# print(queries[0])
-# print(queries.__len__())
-# cropped = queries[0:10]
-# print(cropped)
-# for query in queries:
-#     if query[1] == "light":
-#         print(query)
+
+
+def read_db():
+    for query in queries:
+        yield [query[0], query[1], query[2], query[3], query[4], query[5], query[6]]
+
+
+tf.data.Dataset.from_generator(read_db, output_types=(tf.int32, tf.int32, tf.string, tf.string,
+                                                      tf.string, tf.string, tf.string))
